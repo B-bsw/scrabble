@@ -33,6 +33,7 @@ export default function RootLayout({
         <html
             lang="en"
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+            data-theme="ocean"
         >
             <body className="flex min-h-full flex-col">{children}</body>
         </html>
