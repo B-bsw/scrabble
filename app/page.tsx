@@ -1,11 +1,11 @@
-import MainPage from "@/components/Main";
+import MainPage from '@/components/Main'
 
 export default function Page() {
-  return (
-    <>
-      <div className="h-screen flex items-center justify-center ">
-        <MainPage />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="flex h-screen items-center justify-center">
+                <MainPage />
+            </div>
+        </>
+    )
 }
