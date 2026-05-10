@@ -2,7 +2,7 @@
 
 import { Card, InputGroup, Spinner } from '@heroui/react'
 import axios from 'axios'
-import { Check, X } from 'lucide-react'
+import { Check, Ellipsis, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 export default function MainPage() {
@@ -39,30 +39,41 @@ export default function MainPage() {
         <>
             <Card className="items-center border border-zinc-50">
                 {/*<div>{inputWord.length === 0 ? "N/A" : inputWord}</div>*/}
+
+                <div className="font-bold">
+                    {inputWord.length === 0 ? (
+                        <div className="animate-caret-blink font-normal">
+                            <Ellipsis />
+                        </div>
+                    ) : data[inputWord] ? (
+                        'Has word'
+                    ) : (
+                        "Don't has word"
+                    )}
+                </div>
+
                 <InputGroup variant="primary">
                     <InputGroup.Prefix>
                         {data[inputWord] ? (
-                            <Check size={16} />
+                            <Check size={20} className="text-lime-600" />
                         ) : (
-                            <X size={16} />
+                            <X size={20} className="text-red-600" />
                         )}
                     </InputGroup.Prefix>
                     <InputGroup.Input
+                        placeholder="Type word"
                         value={inputWord}
                         onChange={(e) =>
                             setInputWord(e.currentTarget.value.toUpperCase())
                         }
                     />
                     <InputGroup.Suffix
-                        className="cursor-pointer"
+                        className="cursor-pointer select-none"
                         onClick={() => setInputWord('')}
                     >
                         clear
                     </InputGroup.Suffix>
                 </InputGroup>
-                <div className="font-bold">
-                    {data[inputWord] ? 'Has word' : "Don't has word"}
-                </div>
             </Card>
         </>
     )
