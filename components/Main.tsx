@@ -2,7 +2,7 @@
 
 import { Card, InputGroup, Spinner } from '@heroui/react'
 import axios from 'axios'
-import { Check, KeyIcon, Plus, X } from 'lucide-react'
+import { Check, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 export default function MainPage() {
@@ -16,7 +16,7 @@ export default function MainPage() {
                 process.env.NEXT_PUBLIC_API ||
                 `http://localhost:${process.env.NEXT_PUBLIC_PORT || 3000}`
 
-            const fData = axios
+            axios
                 .get(API + 'all')
                 .then((e) => setData(e.data))
                 .catch((err) => console.log(err))
