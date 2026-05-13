@@ -41,7 +41,7 @@ export default function MainPage() {
                 <Card.Title>Scrabble Word Checker</Card.Title>
             </Card.Header>
             <Card.Content className="flex flex-col gap-4">
-                <div className="flex h-12 items-center justify-center rounded-lg bg-zinc-100 text-xl font-bold dark:bg-zinc-800">
+                <div className="flex h-12 items-center justify-center rounded-lg text-xl font-bold dark:bg-zinc-800">
                     {inputWord.length === 0 ? (
                         <div className="animate-caret-blink font-normal text-zinc-400">
                             <Ellipsis />

@@ -1,6 +1,8 @@
 @layer base {
     /* HeroUI Default Theme */
-    :root {
+    :root,
+    .light,
+    [data-theme='light'] {
         color-scheme: light;
 
         /* == Common Variables == */
