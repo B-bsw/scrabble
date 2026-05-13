@@ -36,7 +36,7 @@ export default function MainPage() {
     }
 
     return (
-        <Card className="w-full max-w-md">
+        <Card className="mx-2 w-full max-w-md">
             <Card.Header>
                 <Card.Title>Scrabble Word Checker</Card.Title>
             </Card.Header>
