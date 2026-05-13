@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, InputGroup, Spinner } from '@heroui/react'
+import { Card, TextField, InputGroup, Spinner } from '@heroui/react'
 import axios from 'axios'
 import { Check, Ellipsis, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -28,53 +28,62 @@ export default function MainPage() {
 
     if (isLoading) {
         return (
-            <>
+            <div className="flex items-center">
                 <Spinner />
                 <span className="ml-2">Loading</span>
-            </>
+            </div>
         )
     }
 
     return (
-        <>
-            <Card className="items-center border border-zinc-50">
-                {/*<div>{inputWord.length === 0 ? "N/A" : inputWord}</div>*/}
-
-                <div className="font-bold">
+        <Card className="w-full max-w-md">
+            <Card.Header>
+                <Card.Title>Scrabble Word Checker</Card.Title>
+            </Card.Header>
+            <Card.Content className="flex flex-col gap-4">
+                <div className="flex h-12 items-center justify-center rounded-lg text-xl font-bold dark:bg-zinc-800">
                     {inputWord.length === 0 ? (
-                        <div className="animate-caret-blink font-normal">
+                        <div className="animate-caret-blink font-normal text-zinc-400">
                             <Ellipsis />
                         </div>
                     ) : data[inputWord] ? (
-                        'Has word'
+                        <span className="text-lime-600">Word Found!</span>
                     ) : (
-                        "Don't has word"
+                        <span className="text-red-500">Not Found</span>
                     )}
                 </div>
 
-                <InputGroup variant="primary">
-                    <InputGroup.Prefix>
-                        {data[inputWord] ? (
-                            <Check size={20} className="text-lime-600" />
-                        ) : (
-                            <X size={20} className="text-red-600" />
+                <TextField aria-label="Word to check">
+                    <InputGroup>
+                        <InputGroup.Prefix>
+                            {inputWord.length === 0 ? null : data[inputWord] ? (
+                                <Check size={20} className="text-lime-600" />
+                            ) : (
+                                <X size={20} className="text-red-600" />
+                            )}
+                        </InputGroup.Prefix>
+                        <InputGroup.Input
+                            placeholder="Type a word to check..."
+                            value={inputWord}
+                            onChange={(e) =>
+                                setInputWord(
+                                    e.currentTarget.value.toUpperCase()
+                                )
+                            }
+                        />
+                        {inputWord.length > 0 && (
+                            <InputGroup.Suffix>
+                                <button
+                                    className="cursor-pointer text-sm text-zinc-500 select-none hover:text-zinc-800"
+                                    onClick={() => setInputWord('')}
+                                >
+                                    Clear
+                                </button>
+                            </InputGroup.Suffix>
                         )}
-                    </InputGroup.Prefix>
-                    <InputGroup.Input
-                        placeholder="Type word"
-                        value={inputWord}
-                        onChange={(e) =>
-                            setInputWord(e.currentTarget.value.toUpperCase())
-                        }
-                    />
-                    <InputGroup.Suffix
-                        className="cursor-pointer select-none"
-                        onClick={() => setInputWord('')}
-                    >
-                        clear
-                    </InputGroup.Suffix>
-                </InputGroup>
-            </Card>
-        </>
+                    </InputGroup>
+                </TextField>
+            </Card.Content>
+        </Card>
     )
 }
