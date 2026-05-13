@@ -33,10 +33,10 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             suppressHydrationWarning
         >
-            <body className="flex min-h-full flex-col">
+            <body>
                 <Providers>{children}</Providers>
             </body>
         </html>
