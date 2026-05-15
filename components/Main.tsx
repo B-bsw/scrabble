@@ -67,7 +67,7 @@ export default function MainPage() {
                             value={inputWord}
                             onChange={(e) =>
                                 setInputWord(
-                                    e.currentTarget.value.toUpperCase()
+                                    e.currentTarget.value.toUpperCase().trim()
                                 )
                             }
                         />
