@@ -14,8 +14,30 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-    title: 'Check scrabble word',
+    applicationName: 'Scrabble finder',
+    title: 'Scrabble finder',
     description: 'check word in scrabble game',
+    manifest: '/manifest.json',
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'default',
+        title: 'Scrabble finder',
+    },
+    icons: {
+        icon: [
+            {
+                url: '/icons/icon-192x192.png',
+                sizes: '192x192',
+                type: 'image/png',
+            },
+            {
+                url: '/icons/icon-512x512.png',
+                sizes: '512x512',
+                type: 'image/png',
+            },
+        ],
+        apple: '/icons/apple-touch-icon.png',
+    },
 }
 
 export const viewport: Viewport = {
@@ -23,6 +45,7 @@ export const viewport: Viewport = {
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
+    themeColor: '#000000',
 }
 
 export default function RootLayout({
@@ -33,10 +56,10 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             suppressHydrationWarning
         >
-            <body className="flex min-h-full flex-col">
+            <body>
                 <Providers>{children}</Providers>
             </body>
         </html>
